@@ -1,19 +1,19 @@
 {
   "contributors": [
     {
-      "name": "Dexter Hardy",
-      "email": "dexter.hardy@ntegral.com",
-      "url": "http://www.ntegral.com"
+      "name": "Vo Quang Hoa",
+      "email": "voquanghoa@gmail.com",
+      "url": "https://github.com/voquanghoa/easy-sentry"
     }
   ],
-  "name": "@ntegral/nestjs-sentry",
-  "version": "3.0.7",
+  "name": "easy-sentry",
+  "version": "1.0.0",
   "description": "Provides an injectable sentry.io client to provide enterprise logging nestjs modules",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ntegral/nestjs-sentry"
+    "url": "git+https://github.com/voquanghoa/easy-sentry"
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
@@ -29,7 +29,7 @@
     "nestjs",
     "sentry.io"
   ],
-  "author": "Dexter Hardy",
+  "author": "Vo Quang Hoa",
   "license": "ISC",
   "peerDependencies": {
     "@nestjs/common": "^9.0.4",

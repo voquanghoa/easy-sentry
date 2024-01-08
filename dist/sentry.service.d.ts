@@ -1,5 +1,4 @@
-import { ConsoleLogger } from '@nestjs/common';
-import { OnApplicationShutdown } from '@nestjs/common';
+import { ConsoleLogger, OnApplicationShutdown } from '@nestjs/common';
 import * as Sentry from '@sentry/node';
 import { SentryModuleOptions } from './sentry.interfaces';
 export declare class SentryService extends ConsoleLogger implements OnApplicationShutdown {
