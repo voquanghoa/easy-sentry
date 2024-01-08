@@ -63,8 +63,8 @@ let SentryInterceptor = class SentryInterceptor {
             const opts = this.options;
             if (opts.filters) {
                 let filters = opts.filters;
-                return filters.some(({ type, filter }) => {
-                    return !(exception instanceof type && (!filter || filter(exception)));
+                return filters.every(({ type, filter }) => {
+                    return (exception instanceof type && (!filter || filter(exception)));
                 });
             }
         }
