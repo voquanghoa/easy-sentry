@@ -6,11 +6,11 @@ import {
   Injectable,
   NestInterceptor
 } from '@nestjs/common';
-import { 
+import {
+  ContextType,
   HttpArgumentsHost,
-  WsArgumentsHost,
   RpcArgumentsHost,
-  ContextType
+  WsArgumentsHost
 } from '@nestjs/common/interfaces';
 // Rxjs imports
 import { Observable } from 'rxjs';
@@ -19,8 +19,8 @@ import { tap } from 'rxjs/operators';
 import { Scope } from '@sentry/hub';
 import { Handlers } from '@sentry/node';
 
-import { SentryService } from './sentry.service';
 import { SentryInterceptorOptions, SentryInterceptorOptionsFilter } from './sentry.interfaces';
+import { SentryService } from './sentry.service';
 
 
 @Injectable()
@@ -107,8 +107,8 @@ export class SentryInterceptor implements NestInterceptor {
       const opts: SentryInterceptorOptions = this.options as {}
       if (opts.filters) {
         let filters: SentryInterceptorOptionsFilter[] = opts.filters
-        return filters.some(({ type, filter }) => {
-          return !(exception instanceof type && (!filter || filter(exception)));
+        return filters.every(({ type, filter }) => {
+          return (exception instanceof type && (!filter || filter(exception)));
         });
       }
     } else {
