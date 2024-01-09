@@ -57,20 +57,23 @@ let SentryInterceptor = class SentryInterceptor {
         this.client.instance().captureException(exception);
     }
     shouldReport(exception) {
-        if (this.options && !this.options.filters)
+        if (this.options && !this.options.filters) {
             return true;
+        }
         if (this.options) {
             const opts = this.options;
             if (opts.filters) {
-                let filters = opts.filters;
-                return filters.every(({ type, filter }) => {
-                    return (exception instanceof type && (!filter || filter(exception)));
-                });
+                const filters = opts.filters;
+                return filters.every((option) => this.testFilter(exception, option));
             }
         }
         else {
             return true;
         }
+    }
+    testFilter(exception, option) {
+        const { type, filter } = option;
+        return !((exception instanceof type && (!filter || filter(exception))));
     }
 };
 SentryInterceptor = __decorate([
